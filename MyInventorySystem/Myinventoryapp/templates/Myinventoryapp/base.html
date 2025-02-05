@@ -1,0 +1,52 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>Water Bottles</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+        <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static '/bootstrap/css/custom.css' %}">
+
+        <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <style>
+        .footer {position: fixed; left: 0; bottom: 0; width: 100%;}
+    </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-custom mb-3 sticky-top" style="background-color: #0D6EFD;">
+            <div class="container-fluid">
+                <a class="navbar-brand mb-0" href="">Water Bottle Inventory</span></a>
+                        <ul class="navbar-nav list-group-horizontal me-auto">
+                        {% if a %}
+                        <li class="nav-item active">
+                            <a class="nav-link d-inline mx-2" href="{% url 'view_supplier' pk=a.pk %}">Suppliers</a>
+                        <li class="nav-item active">
+                            <a class="nav-link d-inline mx-2" href="{% url 'view_bottles' pk=a.pk %}">Water Bottles</a>    
+                        <li class="nav-item active">
+                            <a class="nav-link d-inline mx-2" href="{% url 'manage_account' pk=a.pk %}">Manage Account</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link d-inline mx-3" href="{% url 'login' %}">Logout</a>
+                        </li>
+                        </ul>
+                <a href="{% url 'add_bottle' pk=a.pk %}" style="color:white"><i class="material-icons">add</i></a>
+                {% endif %}
+            </div>
+        </nav>
+
+        <div class="container">
+                <div class="col justify-content-center">
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>  
+        
+        <footer class="footer bg-custom" style="background-color: #0D6EFD;">
+
+            <div class="container text-center text-light py-1">&copy; 2023</div>
+          
+        </footer>
+
+    </body>
+</html>

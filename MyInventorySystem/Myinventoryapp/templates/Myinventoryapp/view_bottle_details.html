@@ -1,0 +1,61 @@
+
+{% extends 'Myinventoryapp/base.html' %}
+{% load static %}
+
+
+                {% block content %}
+
+                <div class="row d-flex justify-content-center">
+                    {% if a %}
+                    <a href="{% url 'view_bottles' pk=a.pk %}" class="btn btn-secondary btn-sm w-50 mt-2">Back to Bottle List</a>
+                    {% endif %}
+                </div>
+
+                <div class="col d-flex justify-content-center">
+                    <div class="card w-50 mt-3 center">
+                        <div class="card-header">
+                            <h5 class="card-title"> Water Bottle Details:</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-6">
+                                    <p>
+                                        <b>SKU Number:</b> {{b.sku}}
+                                    </p>
+                                    <p>
+                                        <b>Brand:</b> {{b.brand}}
+                                    </p>
+                                    <p>
+                                        <b>Cost:</b> {{b.cost}}
+                                    </p>
+                                    <p>
+                                        <b>Bottle Size:</b> {{b.size}}
+                                    </p>
+                                    <p>
+                                        <b>Mouth Size:</b> {{b.mouth_size}}
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <p>
+                                        <b>Color:</b> {{b.color}}
+                                    </p>
+                                    <p>
+                                        <b>Supplier:</b> {{b.supplied_by}}
+                                    </p>
+                                    <p>
+                                        <b>Quantity:</b> {{b.current_quantity}}
+                                    </p>
+                                </div>
+                            <hr>
+                            </div>
+                            <p>
+                                {% if a %}
+                                <a href="{% url 'delete_bottle' pk=a.pk pk_bottle=b.pk %}"  class="btn btn-danger center float-start">Delete</a>
+                                {% endif %}
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {% endblock %}

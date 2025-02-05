@@ -1,0 +1,35 @@
+{% extends 'Myinventoryapp/base.html' %}
+{% load static %}
+
+
+                {% block content %}
+                <div class="row">
+
+                    <div class="col">
+                        <h3>Water Bottle Suppliers</h3>
+                        <table class="table table-striped mt-3">
+                            <thead >
+                                <tr>
+                                    <th class="table-dark" scope="col"> Name </th>
+                                    <th class="table-dark" scope="col"> City </th>
+                                    <th class="table-dark" scope="col"> Country </th> 
+                                    <th class="table-dark" scope="col"> Created at </th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for s in supplier %}
+                                {% if a %}
+                                <tr>
+                                    <td> <a href="{% url 'view_bottles' pk=a.pk %}" class="link-primary">{{ s.name }}</a> </td>
+                                    <td> {{ s.city }} </td>
+                                    <td> {{ s.country }} </td>
+                                    <td> {{ s.created_at }} </td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                {% endblock %}

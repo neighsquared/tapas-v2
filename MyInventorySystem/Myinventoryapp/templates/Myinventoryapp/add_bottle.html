@@ -1,0 +1,68 @@
+{% extends 'Myinventoryapp/base.html' %}
+{% load static %}
+
+
+                {% block content %}
+                <div class="col d-flex justify-content-center">
+                    <div class="card w-75 mt-2">
+                        <div class="card-header">
+                            <h5>Input Water Bottle Details:</h5>
+                        </div>
+            
+                        <div class="card-body">
+                            {% if a %}
+                            <form method="POST" action="{% url 'add_bottle' pk=a.pk %}">{% csrf_token %}
+                            {% endif %}
+                                <div class="form-group row">
+                                    <div class="form-group col-6 me-auto">
+                                        <b><label for="sku">SKU:</label></b>
+                                        <input type="text" class="form-control mt-2" id="sku" name="sku">
+                                    </div>
+                                    <div class="form-group col-6 me-auto">
+                                        <b><label for="brand">Brand:</label></b>
+                                        <input type="text" class="form-control mt-2" id="brand" name="brand">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <div class="form-group col-6 me-auto">
+                                        <b><label for="cost">Cost:</label></b>
+                                        <input type="text" class="form-control mt-2" id="cost" name="cost">
+                                    </div>
+                                    <div class="form-group col-6 me-auto">
+                                        <b><label for="size">Size:</label></b>
+                                        <input type="text" class="form-control mt-2" id="size" name="size">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <div class="form-group col-6 me-auto">
+                                        <b><label for="mouth_size">Mouth Size:</label></b>
+                                        <input type="text" class="form-control mt-2" id="mouth_size" name="mouth_size">
+                                    </div>
+                                    <div class="form-group col-6 me-auto">
+                                        <b><label for="color">Color:</label></b>
+                                        <input type="text" class="form-control mt-2" id="color" name="color">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <div class="form-group col-6 me-auto">
+                                        <b><label for="supplied_by">Supplier:</label></b>
+                                        <select class="form-select mt-2" id="supplied_by" name="supplied_by">
+                                            {% for s in supplier %}
+                                            <option value="{{ s.pk }}">{{ s.name }}</option>
+                                            {% endfor %}
+                                          </select>
+                                    </div>
+                                    <div class="form-group col-6 me-auto">
+                                        <b><label for="current_quantity">Quantity:</label></b>
+                                        <input type="text" class="form-control mt-2" id="current_quantity" name="current_quantity">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4">Add Bottle</button>
+                                <a href="{% url 'view_supplier' pk=a.pk %}" class="btn btn-danger mx-2 mt-4">Cancel</a>
+                            </form>
+            
+                        </div>
+                    </div>
+                </div>
+        
+                {% endblock%}

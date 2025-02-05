@@ -1,0 +1,55 @@
+{% extends 'Myinventoryapp/base.html' %}
+{% load static %}
+
+
+                {% block content %}
+                <div class="row ">
+
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Water Bottle List</h3>
+                            </div>
+                            <div class="col-6">
+                                {% if a %}
+                                <a href="{% url 'view_supplier' pk=a.pk %}"  class="btn btn-primary float-end">Back to Supplier List</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <table class="table table-striped align-middle mt-3">
+                            <thead >
+                                <tr>
+                                    <th class="table-dark" scope="col"> SKU </th>
+                                    <th class="table-dark" scope="col"> Brand </th>
+                                    <th class="table-dark" scope="col"> Cost </th>
+                                    <th class="table-dark" scope="col"> Size </th>
+                                    <th class="table-dark" scope="col"> Mouth Size </th>
+                                    <th class="table-dark" scope="col"> Color </th>
+                                    <th class="table-dark" th style="width: 32%" scope="col"> Supplied by </th>
+                                    <th class="table-dark" scope="col"> Quantity </th>
+                                    <th class="table-dark" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for b in bottle %}
+                                {% if a %}
+                                <tr>
+                                    <td> {{ b.sku }} </td>
+                                    <td> {{ b.brand }} </td>
+                                    <td> {{ b.cost }} </td>
+                                    <td> {{ b.size }} </td>
+                                    <td> {{ b.mouth_size }} </td>
+                                    <td> {{ b.color }} </td>
+                                    <td> {{ b.supplied_by }} </td>
+                                    <td> {{ b.current_quantity }} </td>
+                                    <td><a href="{% url 'view_bottle_details' pk=a.pk pk_bottle=b.pk %}" class="btn btn-dark btn-sm">Details</button></td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <br><br>
+                    </div>
+
+                </div>
+                {% endblock %}

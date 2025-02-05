@@ -1,0 +1,27 @@
+{% extends 'Myinventoryapp/base.html' %}
+{% load static %}
+
+
+                {% block content %}
+                {% if a %}
+                <div class="row d-flex justify-content-center">
+                    <a href="{% url 'view_supplier' pk=a.pk %}" class="btn btn-secondary btn-sm w-50 mt-2">Back to Supplier List</a>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="card w-50 mt-3 center">
+                        <div class="card-header text">
+                            <h5>Account Management</h5>
+                        </div>
+            
+                        <div class="card-body">
+                            <p class="h5 mb-3">Account Details</p>
+                            <p class="text-left"><b>Username:</b> {{a.username}}</p>
+                            <p class="text-left"><b>Password:</b> {{a.password}}</p>
+                            <hr>
+                            <a href="{% url 'change_password' pk=a.pk %}" class="btn btn-success my-1">Change Password</a>
+                            <a href="{% url 'delete_account' pk=a.pk %}" class="btn btn-danger my-1 mx-2">Delete Account</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endblock %}
